@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // =================================================================
     // CONFIGURATION
     // =================================================================
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwOwXMiS9eq-jgCRUR0Wx83V5XTNRQqzt49x-n58r027k3Jk10NptyFHAjQTCfn4A-J3w/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby3fFK8PhgqXGdRMbI_Oo_dTM7qVh0Ll-QpIXwttWtOaIYAG2LzRaKoUWl-0dIA6PUjSw/exec';
     
     // =================================================================
     // GLOBAL STATE & VARIABLES
@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentUser = null;
     let journalEntries = [];
     let attendanceData = [];
+    let availableClasses = [];
     let currentCalDate = new Date();
     
     // =================================================================
@@ -132,18 +133,24 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         const email = e.target.loginEmail.value;
         const password = e.target.loginPassword.value;
+
         if (email === 'Admin' && password === 'admin69') {
             currentUser = { nama: 'Administrator', email: 'Admin' };
             localStorage.setItem('currentUser', JSON.stringify(currentUser));
             await showApp();
             return;
         }
+
         showLoader(true);
         try {
-            const result = await callAppsScript('login', { email, password });
-            currentUser = result;
-            localStorage.setItem('currentUser', JSON.stringify(result));
-            await showApp();
+            const response = await callAppsScript('login', { email, password });
+            if (response.status === 'success') {
+                currentUser = response.user;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                await showApp();
+            } else if (response.status === 'pending') {
+                showAlertModal(response.message, 'info');
+            }
         } catch (error) {
             showAlertModal(`Login Gagal: ${error.message}`, 'error');
         } finally {
@@ -208,10 +215,12 @@ document.addEventListener('DOMContentLoaded', function() {
     async function loadInitialData() {
         showLoader(true);
         try {
-            [journalEntries, attendanceData] = await Promise.all([
+            [journalEntries, attendanceData, availableClasses] = await Promise.all([
                 callAppsScript('getJournal', { userEmail: currentUser.email }),
-                callAppsScript('getAttendance', { userEmail: currentUser.email })
+                callAppsScript('getAttendance', { userEmail: currentUser.email }),
+                callAppsScript('getUniqueClasses')
             ]);
+            populateClassDropdowns();
             const today = new Date();
             document.getElementById('quickDate').value = today.toISOString().split('T')[0];
             document.getElementById('attendanceDate').value = today.toISOString().split('T')[0];
@@ -224,6 +233,37 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // --- FUNGSI DIPERBAIKI ---
+    function populateClassDropdowns() {
+        const dropdownSelectors = ['#quickClass', '#filterClass', '#attendanceClass', '#reportClass', '#editClass'];
+        
+        dropdownSelectors.forEach(selector => {
+            const selectElement = document.querySelector(selector);
+            if (selectElement) {
+                // Simpan teks dan nilai dari opsi pertama
+                const firstOptionText = selectElement.options[0].textContent;
+                const firstOptionValue = selectElement.options[0].value;
+                
+                // Kosongkan dropdown
+                selectElement.innerHTML = '';
+                
+                // Buat ulang dan tambahkan opsi pertama
+                const firstOption = document.createElement('option');
+                firstOption.value = firstOptionValue;
+                firstOption.textContent = firstOptionText;
+                selectElement.appendChild(firstOption);
+
+                // Tambahkan kelas dari data yang diambil
+                availableClasses.forEach(className => {
+                    const option = document.createElement('option');
+                    option.value = className;
+                    option.textContent = className;
+                    selectElement.appendChild(option);
+                });
+            }
+        });
+    }
+
     function updateDashboard() {
         renderRecentEntries();
         updateStatistics();
