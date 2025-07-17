@@ -24,15 +24,7 @@
                 <h2 class="text-3xl font-bold text-center text-gray-800">Selamat Datang!</h2>
                 <form id="loginForm" class="mt-8 space-y-6">
                     <input id="loginEmail" name="email" type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg" placeholder="Email">
-                    
-                    <!-- [MODIFIKASI] Input Password Login dengan Tombol Show/Hide -->
-                    <div class="relative">
-                        <input id="loginPassword" name="password" type="password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg" placeholder="Password">
-                        <button type="button" id="toggleLoginPassword" class="absolute inset-y-0 right-0 px-4 flex items-center text-sm text-gray-600 hover:text-blue-600">
-                            Lihat
-                        </button>
-                    </div>
-                    
+                    <input id="loginPassword" name="password" type="password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg" placeholder="Password">
                     <button type="submit" class="w-full py-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-semibold">Masuk</button>
                     <p class="text-center text-sm">Belum punya akun? <a href="#" id="showRegister" class="font-medium text-blue-600">Daftar di sini</a></p>
                 </form>
@@ -43,15 +35,7 @@
                 <form id="registerForm" class="mt-8 space-y-6">
                      <input id="registerName" name="nama" type="text" required class="w-full px-4 py-3 border rounded-lg" placeholder="Nama Lengkap">
                     <input id="registerEmail" name="email" type="email" required class="w-full px-4 py-3 border rounded-lg" placeholder="Email">
-
-                    <!-- [MODIFIKASI] Input Password Daftar dengan Tombol Show/Hide -->
-                    <div class="relative">
-                        <input id="registerPassword" name="password" type="password" required class="w-full px-4 py-3 border rounded-lg" placeholder="Password">
-                         <button type="button" id="toggleRegisterPassword" class="absolute inset-y-0 right-0 px-4 flex items-center text-sm text-gray-600 hover:text-blue-600">
-                            Lihat
-                        </button>
-                    </div>
-
+                    <input id="registerPassword" name="password" type="password" required class="w-full px-4 py-3 border rounded-lg" placeholder="Password">
                     <button type="submit" class="w-full py-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-semibold">Daftar</button>
                     <p class="text-center text-sm">Sudah punya akun? <a href="#" id="showLogin" class="font-medium text-blue-600">Masuk di sini</a></p>
                 </form>
@@ -87,7 +71,7 @@
                                 <h2 class="text-xl font-semibold text-gray-800 mb-4">Entri Cepat</h2>
                                 <div class="space-y-4">
                                     <input type="date" id="quickDate" class="w-full px-4 py-2 border rounded-lg">
-                                    <select id="quickClass" class="w-full px-4 py-2 border rounded-lg"><option value="">Pilih Kelas</option></select>
+                                    <select id="quickClass" class="w-full px-4 py-2 border rounded-lg"><option value="">Pilih Kelas</option><option>7A</option><option>7B</option><option>8A</option><option>8B</option><option>9A</option><option>9B</option></select>
                                     <select id="quickSubject" class="w-full px-4 py-2 border rounded-lg"><option value="">Pilih Mapel</option><option>Matematika</option><option>Bahasa Indonesia</option><option>IPA</option><option>IPS</option><option>Bahasa Inggris</option></select>
                                     <textarea id="quickActivity" rows="3" class="w-full px-4 py-2 border rounded-lg" placeholder="Deskripsi kegiatan..."></textarea>
                                     <div class="flex justify-end"><button id="quickSaveBtn" class="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700">Simpan</button></div>
@@ -133,7 +117,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                             <input type="date" id="filterFromDate" class="w-full px-4 py-2 border rounded-lg">
                             <input type="date" id="filterToDate" class="w-full px-4 py-2 border rounded-lg">
-                            <select id="filterClass" class="w-full px-4 py-2 border rounded-lg"><option value="">Semua Kelas</option></select>
+                            <select id="filterClass" class="w-full px-4 py-2 border rounded-lg"><option value="">Semua Kelas</option><option>7A</option><option>7B</option><option>8A</option><option>8B</option><option>9A</option><option>9B</option></select>
                             <select id="filterSubject" class="w-full px-4 py-2 border rounded-lg"><option value="">Semua Mapel</option><option>Matematika</option><option>Bahasa Indonesia</option><option>IPA</option><option>IPS</option><option>Bahasa Inggris</option></select>
                         </div>
                         <div class="mt-4 flex justify-end"><button id="applyFilterBtn" class="px-6 py-2 bg-blue-600 text-white rounded-lg">Terapkan</button></div>
@@ -146,7 +130,7 @@
                      <div class="flex justify-between items-center mb-6"><h2 class="text-2xl font-bold">Absensi Siswa</h2><button id="backToDashboardFromAttendance" class="text-blue-600">‹ Kembali</button></div>
                      <div class="bg-white rounded-xl shadow-md p-6 mb-6">
                         <div class="flex border-b"><button id="newAttendanceTab" class="px-4 py-2 font-medium tab-active">Absensi Baru</button><button id="attendanceHistoryTab" class="px-4 py-2 font-medium">Riwayat Absensi</button></div>
-                        <div id="newAttendanceForm" class="pt-4"><div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4"><input type="date" id="attendanceDate" class="w-full px-4 py-2 border rounded-lg"><select id="attendanceClass" class="w-full px-4 py-2 border rounded-lg"><option value="">Pilih Kelas</option></select><select id="attendanceSubject" class="w-full px-4 py-2 border rounded-lg"><option value="">Pilih Mapel</option><option>Matematika</option><option>Bahasa Indonesia</option><option>IPA</option><option>IPS</option><option>Bahasa Inggris</option></select></div><button id="loadStudentsBtn" class="px-4 py-2 bg-blue-600 text-white rounded-lg">Muat Daftar Siswa</button><div id="studentListContainer" class="hidden mt-4"><div class="overflow-x-auto"><table class="min-w-full divide-y"><thead class="bg-gray-50"><tr><th class="px-6 py-3 text-left text-xs uppercase">No</th><th class="px-6 py-3 text-left text-xs uppercase">Nama Siswa</th><th class="px-6 py-3 text-left text-xs uppercase">Status</th><th class="px-6 py-3 text-left text-xs uppercase">Keterangan</th></tr></thead><tbody id="studentListBody"></tbody></table></div><div class="mt-4 flex justify-end"><button id="saveAttendanceBtn" class="px-6 py-2 bg-blue-600 text-white rounded-lg">Simpan Absensi</button></div></div></div>
+                        <div id="newAttendanceForm" class="pt-4"><div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4"><input type="date" id="attendanceDate" class="w-full px-4 py-2 border rounded-lg"><select id="attendanceClass" class="w-full px-4 py-2 border rounded-lg"><option value="">Pilih Kelas</option><option>7A</option><option>7B</option><option>8A</option><option>8B</option><option>9A</option><option>9B</option></select><select id="attendanceSubject" class="w-full px-4 py-2 border rounded-lg"><option value="">Pilih Mapel</option><option>Matematika</option><option>Bahasa Indonesia</option><option>IPA</option><option>IPS</option><option>Bahasa Inggris</option></select></div><button id="loadStudentsBtn" class="px-4 py-2 bg-blue-600 text-white rounded-lg">Muat Daftar Siswa</button><div id="studentListContainer" class="hidden mt-4"><div class="overflow-x-auto"><table class="min-w-full divide-y"><thead class="bg-gray-50"><tr><th class="px-6 py-3 text-left text-xs uppercase">No</th><th class="px-6 py-3 text-left text-xs uppercase">Nama Siswa</th><th class="px-6 py-3 text-left text-xs uppercase">Status</th><th class="px-6 py-3 text-left text-xs uppercase">Keterangan</th></tr></thead><tbody id="studentListBody"></tbody></table></div><div class="mt-4 flex justify-end"><button id="saveAttendanceBtn" class="px-6 py-2 bg-blue-600 text-white rounded-lg">Simpan Absensi</button></div></div></div>
                         <div id="attendanceHistoryContent" class="pt-4 hidden"><div class="overflow-x-auto"><table class="min-w-full divide-y"><thead class="bg-gray-50"><tr><th class="px-6 py-3 text-left text-xs uppercase">Tanggal</th><th class="px-6 py-3 text-left text-xs uppercase">Kelas</th><th class="px-6 py-3 text-left text-xs uppercase">Mapel</th><th class="px-6 py-3 text-left text-xs uppercase">Hadir</th><th class="px-6 py-3 text-left text-xs uppercase">Tidak Hadir</th><th class="px-6 py-3 text-right text-xs uppercase">Aksi</th></tr></thead><tbody id="attendanceHistoryBody"></tbody></table></div><div id="noAttendanceMessage" class="py-8 text-center hidden">Tidak ada data.</div></div>
                      </div>
                 </div>
@@ -156,7 +140,7 @@
                     <div class="flex justify-between items-center mb-6 no-print"><h2 class="text-2xl font-bold text-gray-800">Laporan</h2><button id="backToDashboardFromReports" class="text-blue-600">‹ Kembali</button></div>
                     <div class="bg-white rounded-xl shadow-md p-6 mb-6 no-print">
                         <div class="flex border-b mb-4"><button id="journalReportTab" class="px-4 py-2 font-medium report-tab tab-active">Laporan Jurnal</button><button id="attendanceReportTab" class="px-4 py-2 font-medium report-tab">Rekap Absensi</button><button id="summaryReportTab" class="px-4 py-2 font-medium report-tab">Ringkasan Umum</button></div>
-                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end"><input type="date" id="reportFromDate" class="w-full px-4 py-2 border rounded-lg"><input type="date" id="reportToDate" class="w-full px-4 py-2 border rounded-lg"><select id="reportClass" class="w-full px-4 py-2 border rounded-lg"><option value="">Semua Kelas</option></select><select id="reportSubject" class="w-full px-4 py-2 border rounded-lg"><option value="">Semua Mapel</option><option>Matematika</option><option>Bahasa Indonesia</option><option>IPA</option><option>IPS</option><option>Bahasa Inggris</option></select></div>
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end"><input type="date" id="reportFromDate" class="w-full px-4 py-2 border rounded-lg"><input type="date" id="reportToDate" class="w-full px-4 py-2 border rounded-lg"><select id="reportClass" class="w-full px-4 py-2 border rounded-lg"><option value="">Semua Kelas</option><option>7A</option><option>7B</option><option>8A</option><option>8B</option><option>9A</option><option>9B</option></select><select id="reportSubject" class="w-full px-4 py-2 border rounded-lg"><option value="">Semua Mapel</option><option>Matematika</option><option>Bahasa Indonesia</option><option>IPA</option><option>IPS</option><option>Bahasa Inggris</option></select></div>
                         <div class="mt-4 flex justify-end"><button id="generateReportBtn" class="px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg">Buat Laporan</button></div>
                     </div>
                     <div id="reportTabContent" class="print-container">
@@ -175,7 +159,7 @@
     
     <!-- Modals -->
     <div id="entryDetailModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"><div class="bg-white rounded-xl shadow-xl max-w-2xl w-full mx-4 p-6 space-y-4"><h2 class="text-xl font-semibold">Detail Jurnal</h2><div><span class="text-sm text-gray-500">Tanggal</span><p id="detailDate"></p></div><div><span class="text-sm text-gray-500">Kelas</span><p id="detailClass"></p></div><div><span class="text-sm text-gray-500">Mata Pelajaran</span><p id="detailSubject"></p></div><div><span class="text-sm text-gray-500">Kegiatan</span><p id="detailActivity"></p></div><div class="pt-4 flex justify-end space-x-3"><button id="editEntryBtn" class="px-4 py-2 bg-blue-600 text-white rounded-lg">Edit</button><button id="deleteEntryBtn" class="px-4 py-2 bg-red-600 text-white rounded-lg">Hapus</button><button id="closeDetailModal" class="px-4 py-2 bg-gray-200 rounded-lg">Tutup</button></div></div></div>
-    <div id="editEntryModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"><div class="bg-white rounded-xl shadow-xl max-w-2xl w-full mx-4 p-6 space-y-4"><h2 class="text-xl font-semibold">Edit Jurnal</h2><input type="hidden" id="editEntryId"><input type="date" id="editDate" class="w-full p-2 border rounded"><select id="editClass" class="w-full p-2 border rounded"></select><select id="editSubject" class="w-full p-2 border rounded"><option>Matematika</option></select><textarea id="editActivity" rows="5" class="w-full p-2 border rounded"></textarea><div class="pt-4 flex justify-end"><button id="updateEntryBtn" class="px-6 py-2 bg-blue-600 text-white rounded-lg">Simpan</button><button id="closeEditModal" class="px-4 py-2 bg-gray-200 rounded-lg">Batal</button></div></div></div>
+    <div id="editEntryModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"><div class="bg-white rounded-xl shadow-xl max-w-2xl w-full mx-4 p-6 space-y-4"><h2 class="text-xl font-semibold">Edit Jurnal</h2><input type="hidden" id="editEntryId"><input type="date" id="editDate" class="w-full p-2 border rounded"><select id="editClass" class="w-full p-2 border rounded"><option>7A</option><option>7B</option></select><select id="editSubject" class="w-full p-2 border rounded"><option>Matematika</option></select><textarea id="editActivity" rows="5" class="w-full p-2 border rounded"></textarea><div class="pt-4 flex justify-end"><button id="updateEntryBtn" class="px-6 py-2 bg-blue-600 text-white rounded-lg">Simpan</button><button id="closeEditModal" class="px-4 py-2 bg-gray-200 rounded-lg">Batal</button></div></div></div>
     <div id="attendanceDetailModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"><div class="bg-white rounded-xl shadow-xl max-w-4xl w-full mx-4 p-6 space-y-4"><h2 class="text-xl font-semibold">Detail Absensi</h2><div class="grid grid-cols-3 gap-4"><div><span class="text-sm text-gray-500">Tanggal</span><p id="attendanceDetailDate"></p></div><div><span class="text-sm text-gray-500">Kelas</span><p id="attendanceDetailClass"></p></div><div><span class="text-sm text-gray-500">Mapel</span><p id="attendanceDetailSubject"></p></div></div><div class="overflow-x-auto"><table class="min-w-full divide-y"><thead class="bg-gray-50"><tr><th class="p-3 text-left">No</th><th class="p-3 text-left">Nama</th><th class="p-3 text-left">Status</th><th class="p-3 text-left">Keterangan</th></tr></thead><tbody id="attendanceDetailBody"></tbody></table></div><div class="pt-4 flex justify-end"><button id="closeAttendanceDetailModal" class="px-4 py-2 bg-gray-200 rounded-lg">Tutup</button></div></div></div>
 
     <script>
@@ -215,27 +199,6 @@
             // INITIALIZATION
             // =================================================================
             checkSession();
-            
-            // [MODIFIKASI] Logika untuk tombol lihat/sembunyikan password
-            function setupPasswordToggle(toggleBtnId, passwordInputId) {
-                const toggleButton = document.getElementById(toggleBtnId);
-                const passwordInput = document.getElementById(passwordInputId);
-
-                if (toggleButton && passwordInput) {
-                    toggleButton.addEventListener('click', function() {
-                        // Ganti tipe atribut input
-                        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-                        passwordInput.setAttribute('type', type);
-                        
-                        // Ganti teks tombol
-                        this.textContent = type === 'password' ? 'Lihat' : 'Sembunyikan';
-                    });
-                }
-            }
-
-            setupPasswordToggle('toggleLoginPassword', 'loginPassword');
-            setupPasswordToggle('toggleRegisterPassword', 'registerPassword');
-            // Akhir dari logika tombol password
 
             // =================================================================
             // AUTHENTICATION & ROUTING
@@ -347,15 +310,10 @@
             async function loadInitialData() {
                 showLoader(true);
                 try {
-                    const [journals, attendance, classes] = await Promise.all([
+                    [journalEntries, attendanceData] = await Promise.all([
                         callAppsScript('getJournal', { userEmail: currentUser.email }),
-                        callAppsScript('getAttendance', { userEmail: currentUser.email }),
-                        callAppsScript('getUniqueClasses')
+                        callAppsScript('getAttendance', { userEmail: currentUser.email })
                     ]);
-                    journalEntries = journals;
-                    attendanceData = attendance;
-                    populateClassDropdowns(classes);
-                    
                     const today = new Date();
                     document.getElementById('quickDate').value = today.toISOString().split('T')[0];
                     document.getElementById('attendanceDate').value = today.toISOString().split('T')[0];
@@ -368,24 +326,6 @@
                 }
             }
             
-            function populateClassDropdowns(classes) {
-                const dropdownSelectors = ['#quickClass', '#filterClass', '#attendanceClass', '#reportClass', '#editClass'];
-                dropdownSelectors.forEach(selector => {
-                    const select = document.querySelector(selector);
-                    if (select) {
-                        const firstOption = select.options[0];
-                        select.innerHTML = '';
-                        select.appendChild(firstOption);
-                        classes.forEach(c => {
-                            const option = document.createElement('option');
-                            option.value = c;
-                            option.textContent = c;
-                            select.appendChild(option);
-                        });
-                    }
-                });
-            }
-
             function updateDashboard() {
                 renderRecentEntries();
                 updateStatistics();
@@ -457,6 +397,7 @@
                 });
             }
 
+            // --- Modal Logic for Journal ---
             function showEntryDetail(entry) {
                 document.getElementById('detailDate').textContent = formatDate(entry.date);
                 document.getElementById('detailClass').textContent = entry.class;
