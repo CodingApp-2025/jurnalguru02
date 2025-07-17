@@ -53,8 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // =================================================================
     function showAlertModal(message, type = 'info') {
         alertModalMessage.textContent = message;
-
-        // Reset classes
         alertModalHeader.className = 'p-4 rounded-t-xl';
         alertModalOkBtn.className = 'px-8 py-2 text-white rounded-lg';
 
@@ -66,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
             alertModalTitle.textContent = 'Terjadi Kesalahan';
             alertModalHeader.classList.add('bg-red-500');
             alertModalOkBtn.classList.add('bg-red-600', 'hover:bg-red-700');
-        } else { // info or warning
+        } else {
             alertModalTitle.textContent = 'Informasi';
             alertModalHeader.classList.add('bg-blue-500');
             alertModalOkBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
@@ -180,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
     showLoginBtn.addEventListener('click', (e) => { e.preventDefault(); document.getElementById('registerView').classList.add('hidden'); document.getElementById('loginView').classList.remove('hidden'); });
 
     // =================================================================
-    // NAVIGATION & OTHER LISTENERS
+    // NAVIGATION
     // =================================================================
     document.getElementById('viewAllBtn').addEventListener('click', () => { showView(allEntriesView); renderAllEntries(); });
     document.getElementById('attendanceBtn').addEventListener('click', () => showView(attendanceView));
